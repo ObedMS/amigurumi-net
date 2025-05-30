@@ -1,16 +1,217 @@
 ---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
+// Importa Swiper y sus estilos
+// import { onMount } from 'astro/client';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tejidos con el corazón</title>
+
+    <!-- Swiper CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+  </head>
+  <body class="font-sans bg-white text-gray-800">
+
+    <Navbar />
+
+    <main class="max-w-5xl mx-auto p-6">
+
+      <!-- Carrusel -->
+      <section class="mb-12">
+        <div class="swiper mySwiper rounded-lg overflow-hidden shadow-lg">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="/images/amigurumi1.jpg"
+                alt="Amigurumi rosa"
+                class="w-full object-cover h-64"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="/images/amigurumi2.jpg"
+                alt="Amigurumi morado"
+                class="w-full object-cover h-64"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="/images/amigurumi3.jpg"
+                alt="Amigurumi gato"
+                class="w-full object-cover h-64"
+              />
+            </div>
+          </div>
+          <!-- Botones -->
+          <div class="swiper-button-next text-pink-600"></div>
+          <div class="swiper-button-prev text-pink-600"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- Descripción -->
+      <section class="mb-12 text-center px-4">
+        <h2 class="text-3xl font-semibold text-pink-700 mb-3">Tejidos con el corazón</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          En nuestra tienda artesanal creamos amigurumis con amor y dedicación. Cada pieza está hecha a mano, cuidando cada detalle para que tengas un regalo único y especial para esas personas que quieres.
+        </p>
+      </section>
+
+      <!-- Productos destacados -->
+      <section class="mb-12 px-4">
+        <h3 class="text-2xl font-semibold text-pink-700 mb-6 text-center">Nuestros favoritos</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <article class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+            <img src="/images/amigurumi1.jpg" alt="Amigurumi rosa" class="w-full h-48 object-cover rounded-md mb-3" />
+            <h4 class="text-lg font-medium">Conejito Rosa</h4>
+            <p class="text-pink-600 font-semibold">$350 MXN</p>
+          </article>
+          <article class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+            <img src="/images/amigurumi2.jpg" alt="Amigurumi morado" class="w-full h-48 object-cover rounded-md mb-3" />
+            <h4 class="text-lg font-medium">Osito Violeta</h4>
+            <p class="text-pink-600 font-semibold">$370 MXN</p>
+          </article>
+          <article class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+            <img src="/images/amigurumi3.jpg" alt="Amigurumi gato" class="w-full h-48 object-cover rounded-md mb-3" />
+            <h4 class="text-lg font-medium">Gatito Amigurumi</h4>
+            <p class="text-pink-600 font-semibold">$400 MXN</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Formulario de cotización -->
+      <section class="mb-16 px-4 max-w-xl mx-auto">
+        <h3 class="text-2xl font-semibold text-pink-700 mb-6 text-center">Pide tu cotización</h3>
+        <form
+          action="https://formspree.io/f/xblyrjla" 
+          method="POST"
+          class="flex flex-col gap-4"
+        >
+          <label class="flex flex-col">
+            <span class="mb-1 font-medium">Nombre completo</span>
+            <input
+              type="text"
+              name="name"
+              required
+              class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+          </label>
+
+          <label class="flex flex-col">
+            <span class="mb-1 font-medium">Correo electrónico</span>
+            <input
+              type="email"
+              name="email"
+              required
+              class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+          </label>
+
+          <label class="flex flex-col">
+            <span class="mb-1 font-medium">Tipo de amigurumi</span>
+            <input
+              type="text"
+              name="tipo"
+              placeholder="Ej. Conejito, Osito, Gato..."
+              required
+              class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+          </label>
+
+          <label class="flex flex-col">
+            <span class="mb-1 font-medium">Mensaje adicional</span>
+            <textarea
+              name="mensaje"
+              rows="3"
+              placeholder="Detalles, colores, tamaño..."
+              class="border rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-pink-500"
+            ></textarea>
+          </label>
+
+          <button
+            type="submit"
+            class="bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-lg font-semibold transition"
+          >
+            Enviar solicitud
+          </button>
+        </form>
+      </section>
+
+      <!-- Contacto y redes sociales -->
+      <section class="mb-12 text-center">
+        <h3 class="text-2xl font-semibold text-pink-700 mb-4">Contáctanos</h3>
+        <p class="mb-4">Síguenos en redes sociales y escríbenos para más info.</p>
+        <div class="flex justify-center gap-8 text-pink-600 text-3xl">
+          <a
+            href="https://instagram.com/tuusuario"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="hover:text-pink-800 transition"
+          >
+            <!-- Instagram SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
+              <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm4.75-.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z" />
+            </svg>
+          </a>
+          <a
+            href="https://facebook.com/tuusuario"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="hover:text-pink-800 transition"
+          >
+            <!-- Facebook SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
+              <path d="M22 12a10 10 0 10-11.5 9.87v-6.97h-3v-2.9h3v-2.2c0-3 1.79-4.6 4.52-4.6 1.3 0 2.67.23 2.67.23v2.94h-1.5c-1.48 0-1.94.92-1.94 1.87v2.56h3.31l-.53 2.9h-2.78v6.97A10 10 0 0022 12z" />
+            </svg>
+          </a>
+          <a
+            href="https://wa.me/1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="hover:text-pink-800 transition"
+          >
+            <!-- WhatsApp SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
+              <path d="M20.52 3.48A11.94 11.94 0 0012 1C6.49 1 2 5.49 2 11a10.87 10.87 0 001.64 5.69L2 23l6.49-1.7A11.94 11.94 0 0012 21c5.51 0 10-4.49 10-10a9.93 9.93 0 00-1.48-6.52zm-8.6 14.6a8.63 8.63 0 01-4.6-1.35l-.32-.2-3.06.8.82-3.02-.21-.31a8.71 8.71 0 011.35-4.58 8.27 8.27 0 015.8-4.36 8.58 8.58 0 016.07 1.7 7.55 7.55 0 012.48 5.61 8.57 8.57 0 01-8.56 8.6zM15.5 13.56l-1.43-.7a.71.71 0 00-.67.1l-.64.63a7.12 7.12 0 01-3.3-2.13 2.57 2.57 0 01-.6-1.06l-.01-.06a.62.62 0 01.22-.68l.49-.44a.56.56 0 00.18-.44.69.69 0 00-.15-.38l-.88-1.1a.61.61 0 00-.49-.27H7a1 1 0 00-1 .62 4.08 4.08 0 001.14 5.17 8.5 8.5 0 004.61 2.58 1.17 1.17 0 001.05-.22l.66-.65a.66.66 0 00.13-.62z" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <!-- Swiper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- <script>
+      const swiper = new Swiper('.mySwiper', {
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+      });
+    </script> -->
+  </body>
 </html>

@@ -1,0 +1,28 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contacto | Tejidos con el corazón</title>
+  </head>
+  <body class="font-sans bg-white text-gray-800">
+    <Navbar />
+
+    <main class="p-6 max-w-xl mx-auto">
+      <h1 class="text-3xl text-pink-700 font-bold mb-4">Contáctanos</h1>
+      <p class="mb-6 text-gray-600">¿Tienes una pregunta o quieres hacer un pedido especial? ¡Escríbenos!</p>
+
+      <form action="https://formspree.io/f/xblyrjla" method="POST" class="flex flex-col gap-4">
+        <input type="text" name="nombre" placeholder="Tu nombre" required class="border p-2 rounded" />
+        <input type="email" name="email" placeholder="Tu correo" required class="border p-2 rounded" />
+        <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required class="border p-2 rounded"></textarea>
+        <button type="submit" class="bg-pink-600 text-white py-2 rounded hover:bg-pink-700">Enviar mensaje</button>
+      </form>
+    </main>
+
+    <Footer />
+  </body>
+</html>
